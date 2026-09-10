@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+
+# Send API requests to the PHP router.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/?(.*)$ api/index.php [QSA,L]
+
+# Vite/React SPA fallback.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
